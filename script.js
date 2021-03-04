@@ -40,6 +40,7 @@ async function getUser()
 
     setInterval(async () => {
         let data = await Fetch(userStatusApi);
+        if(data.status === "TESTING") return;
         if(data.status === "OK") {
             data = data.result[0];
             if(data.id != prvSubmissionId) {
