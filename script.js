@@ -21,31 +21,30 @@ function speakText(msg) {
 let msgEle = document.getElementById("msg");
 let userEle = document.getElementById("user");
 
-async function getUser()
-{
+async function getUser() {
     msgEle.innerText = "";
     let user = userEle.value;
     let userInfoApi = `https://codeforces.com/api/user.info?handles=${user}`;
     let userStatusApi = `https://codeforces.com/api/user.status?handle=${user}&from=1&count=1`;
 
     let data = await Fetch(userInfoApi);
-    if(data.status === "FAILED") {
+    if (data.status === "FAILED") {
         msgEle.innerText = "Invalid Username";
         return;
     }
 
     let firstName = data.result[0].firstName || "sir";
-    let prvSubmissionId = null;
+    let prvSubmissionId = null, prvSubmissionVerdict = null;
     msgEle.innerText = "Waiting for your submission ...";
 
     setInterval(async () => {
         let data = await Fetch(userStatusApi);
-        if(data.status === "TESTING") return;
-        if(data.status === "OK") {
+        if (data.status === "TESTING") return;
+        if (data.status === "OK") {
             data = data.result[0];
-            if(data.id != prvSubmissionId) {
-                if(prvSubmissionId) {
-                    if(data.verdict === "OK") {
+            if (data.id !== prvSubmissionId && data.verdict !== prvSubmissionVerdict) {
+                if (prvSubmissionId) {
+                    if (data.verdict === "OK") {
                         speakText(`well done ${firstName}, AC on problem ${data.problem.index}`);
                     }
                     else {
@@ -53,6 +52,7 @@ async function getUser()
                     }
                 }
                 prvSubmissionId = data.id;
+                data.verdict = prvSubmissionVerdict;
             }
         }
     }, 5000);
