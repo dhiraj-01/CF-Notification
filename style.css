@@ -7,19 +7,8 @@ html, body {
   font-size: 1.2rem;
   font-family: 'Roboto Slab', monospace, sans-serif;
 }
-.hcenter {
-  display: flex;
-  justify-content: center;
-}
-.vcenter {
-  display: flex;
-  align-items: center;
-}
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.hide {
-  display: none;
 }

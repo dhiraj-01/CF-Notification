@@ -20,6 +20,7 @@ function speakText(msg) {
 
 let msgEle = document.getElementById("msg");
 let userEle = document.getElementById("user");
+
 async function getUser()
 {
     msgEle.innerText = "";
@@ -47,7 +48,7 @@ async function getUser()
                         speakText(`well done ${firstName}, AC on problem ${data.problem.index}`);
                     }
                     else {
-                        speakText(`hello ${firstName}, wrong answer on problem ${data.problem.index}`);
+                        speakText(`hey ${firstName}, ${data.verdict.split("_").join(" ")} on problem ${data.problem.index}`);
                     }
                 }
                 prvSubmissionId = data.id;
