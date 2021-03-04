@@ -40,12 +40,12 @@ async function getUser()
 
     setInterval(async () => {
         let data = await Fetch(userStatusApi);
-        if(data.status == "TESTING") return;
         if(data.status == "OK") {
             data = data.result[0];
+            if(data.verdict == "TESTING") return;
             if(data.id != prvSubmissionId) {
                 if(prvSubmissionId) {
-                    if(data.verdict === "OK") {
+                    if(data.verdict == "OK") {
                         speakText(`well done ${firstName}, AC on problem ${data.problem.index}`);
                     }
                     else {
