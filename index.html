@@ -8,18 +8,23 @@
     <link rel="stylesheet" href="./Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body class="center">
-    <div>
-        <h3>Hey User</h3>
-        <div class="row">
-            <div class="col">
-                <input type="text" id="user" class="form-control" placeholder="CF username" style="width: fit-content;">
+<body>
+    <!-- <div class="m-3">
+        <a href="https://github.com/Dhiraj-01/CF-Notification" target="_blank" class="btn btn-secondary">CF Notification</a>
+    </div> -->
+    <div class="center full">
+        <div>
+            <h3>Hey User</h3>
+            <div class="row">
+                <div class="col">
+                    <input type="text" id="user" class="form-control" placeholder="tourist" style="width: fit-content;">
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" onclick="getUser()">Login</button>
+                </div>
             </div>
-            <div class="col">
-                <button class="btn btn-primary" onclick="getUser()">OK</button>
-            </div>
+            <h5 class="mt-2" id="msg"></h5>
         </div>
-        <h5 class="mt-2" id="msg"></h5>
     </div>
     <script src="./script.js"></script>
 </body>

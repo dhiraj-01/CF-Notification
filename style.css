@@ -12,3 +12,6 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+.full {
+    min-height: 100vh;
+}

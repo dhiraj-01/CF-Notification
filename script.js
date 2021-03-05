@@ -36,7 +36,7 @@ async function getUser()
 
     let firstName = data.result[0].firstName || "sir";
     let prvSubmissionId = null;
-    msgEle.innerText = "Waiting for your submission ...";
+    msgEle.innerHTML = `Waiting for <a href="https://codeforces.com/profile/${user}" target="_blank">your</a> submission ...`;
 
     setInterval(async () => {
         let data = await Fetch(userStatusApi);
@@ -49,7 +49,7 @@ async function getUser()
                         speakText(`well done ${firstName}, AC on problem ${data.problem.index}`);
                     }
                     else {
-                        speakText(`hey ${firstName}, ${data.verdict.split("_").join(" ")} on test ${data.passedTestCount + 1} problem ${data.problem.index}`);
+                        speakText(`hey ${firstName}, ${data.verdict.split("_").join(" ")} on test ${data.passedTestCount + 1}, problem ${data.problem.index}`);
                     }
                 }
                 prvSubmissionId = data.id;
